@@ -1,18 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prototypes.h                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktiomico <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/09 09:43:00 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/09/09 10:55:23 by ktiomico         ###   ########.fr       */
+/*   Created: 2024/09/29 02:39:38 by ktiomico          #+#    #+#             */
+/*   Updated: 2024/10/01 16:56:55 by ktiomico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PROTOTYPES_H
-# define PROTOTYPES_H
+#include "libft.h"
 
-t_bool	arg_check(int ac, char **av);
+void	ft_bzero(void *s, size_t num)
+{
+	size_t	i;
+	char	*str;
 
-#endif
+	i = 0;
+	str = (char *)s;
+	while (i < num)
+	{
+		str[i] = '\0';
+		i++;
+	}
+}
+/*
+int	main(void)
+{
+	char str[10];
+
+	ft_bzero(str, 10);
+	printf("%s", str);
+}
+*/

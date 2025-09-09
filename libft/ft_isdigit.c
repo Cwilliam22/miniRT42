@@ -1,18 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prototypes.h                                       :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktiomico <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/09 09:43:00 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/09/09 10:55:23 by ktiomico         ###   ########.fr       */
+/*   Created: 2024/09/29 01:55:40 by ktiomico          #+#    #+#             */
+/*   Updated: 2024/09/29 02:38:34 by ktiomico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PROTOTYPES_H
-# define PROTOTYPES_H
+#include "libft.h"
 
-t_bool	arg_check(int ac, char **av);
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	else
+		return (0);
+}
+/*
+#include <stdio.h>
+int	main(void)
+{
+	int	c = '5';
 
-#endif
+	if (ft_isdigit(c) == 1)
+		printf("c is a digit.\n");
+	else
+		printf("c is not a digit.\n");
+	return (0);
+}
+*/

@@ -1,18 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prototypes.h                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktiomico <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/09 09:43:00 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/09/09 10:55:23 by ktiomico         ###   ########.fr       */
+/*   Created: 2024/10/03 12:03:25 by ktiomico          #+#    #+#             */
+/*   Updated: 2024/10/03 15:20:52 by ktiomico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PROTOTYPES_H
-# define PROTOTYPES_H
+#include "libft.h"
 
-t_bool	arg_check(int ac, char **av);
+t_list	*ft_lstnew(void *content)
+{
+	t_list	*node;
 
-#endif
+	node = ft_calloc(1, sizeof(t_list));
+	if (!node)
+		return (NULL);
+	node->content = content;
+	node->next = NULL;
+	return (node);
+}
+/*
+int	main(void)
+{
+	t_list	*node;
+
+	node = ft_lstnew("Hello");
+	printf("%s\n", node->content);
+}
+*/

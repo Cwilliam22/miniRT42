@@ -10,7 +10,8 @@ NAME   = minirt
 
 # Compiler / flags
 CC        = cc
-CFLAGS    = -Wall -Wextra -Werror -lXext -lX11 -lm -g -I./include
+CFLAGS    = -Wall -Wextra -Werror -lXext -lX11 -lm -g -I./include -I./libft
+LIBFT     = -L./libft -lft
 
 # Directories
 SRCDIR = ./src
@@ -35,19 +36,26 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
 	@printf "$(BLUE)Compiling $<...$(RESET)\n"
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME): $(OBJS)
+libft:
+	@printf "$(BLUE)Building libft...$(RESET)\n"
+	@$(MAKE) -C libft --no-print-directory > /dev/null 2>&1
+	@printf "$(GREEN)✓ libft built.$(RESET)\n"
+
+$(NAME): libft $(OBJS)
 	@printf "$(BLUE)Linking $(NAME)...$(RESET)\n"
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 	@printf "$(GREEN)✓ $(NAME) created.$(RESET)\n"
 
 clean:
 	@printf "$(RED)Cleaning object files...$(RESET)\n"
 	@$(RM) -rf $(OBJDIR)
+	@$(MAKE) -C libft clean --no-print-directory > /dev/null 2>&1
 	@printf "$(GREEN)✓ Objects removed.$(RESET)\n"
 
 fclean: clean
 	@printf "$(RED)Removing $(NAME)...$(RESET)\n"
 	@$(RM) $(NAME)
+	@$(MAKE) -C libft fclean --no-print-directory > /dev/null 2>&1
 	@printf "$(GREEN)✓ Full clean done.$(RESET)\n"
 
 re: fclean all
@@ -60,6 +68,7 @@ help:
 	@printf "  $(GREEN)make clean$(RESET)  - Remove object files\n"
 	@printf "  $(GREEN)make fclean$(RESET) - Remove all generated files\n"
 	@printf "  $(GREEN)make re$(RESET)     - Rebuild everything (clean build)\n"
+	@printf "  $(GREEN)make libft$(RESET)  - Build libft\n"
 	@printf "  $(GREEN)make help$(RESET)   - Show this help message\n"
 
-.PHONY: all clean fclean re help
+.PHONY: all clean fclean re help libft

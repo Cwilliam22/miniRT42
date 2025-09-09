@@ -1,18 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prototypes.h                                       :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktiomico <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/09 09:43:00 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/09/09 10:55:23 by ktiomico         ###   ########.fr       */
+/*   Created: 2024/09/29 01:45:42 by ktiomico          #+#    #+#             */
+/*   Updated: 2024/09/29 02:37:59 by ktiomico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PROTOTYPES_H
-# define PROTOTYPES_H
+#include "libft.h"
 
-t_bool	arg_check(int ac, char **av);
+int	ft_isalpha(int c)
+{
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+		return (1);
+	else
+		return (0);
+}
+/*
+#include <stdio.h>
+int	main(void)
+{
+	int	c = '.';
+	if (ft_isalpha(c) == 1)
+		printf("it's an alpha.\n");
+	else
+	{
+		printf("it's not an alpha.\n");
+	}
 
-#endif
+	return (0);
+}
+*/

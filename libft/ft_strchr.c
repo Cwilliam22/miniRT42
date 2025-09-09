@@ -1,18 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prototypes.h                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktiomico <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/09 09:43:00 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/09/09 10:55:23 by ktiomico         ###   ########.fr       */
+/*   Created: 2024/09/30 21:18:48 by ktiomico          #+#    #+#             */
+/*   Updated: 2024/10/04 16:14:54 by ktiomico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PROTOTYPES_H
-# define PROTOTYPES_H
+#include "libft.h"
 
-t_bool	arg_check(int ac, char **av);
+char	*ft_strchr(const char *s, int c)
+{
+	int	i;
 
-#endif
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
+		i++;
+	}
+	if (s[i] == (char)c)
+		return ((char *)&s[i]);
+	return (NULL);
+}
+/*
+#include <stdio.h>
+#include <string.h>
+int	main(void)
+{
+	char	*str = "Hello";
+	char	c = 'l';
+
+	printf("%s\n", ft_strchr(str, c));
+	printf("%s\n", strchr(str, c));
+}
+*/

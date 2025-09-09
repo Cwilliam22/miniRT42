@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktiomico <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/09 09:20:35 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/09/09 09:20:35 by ktiomico         ###   ########.fr       */
+/*   Created: 2024/09/29 02:04:32 by ktiomico          #+#    #+#             */
+/*   Updated: 2024/09/29 02:38:18 by ktiomico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "libft.h"
 
-int	ft_strcmp(char *s1, char *s2)
+int	ft_isascii(int c)
 {
-	int	i;
-
-	if (!s1 || !s2)
-		return (-1);
-	i = 0;
-	while (s1[i] && s2[i] && s1[i] == s2[i])
-		i++;
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	if (c >= 0 && c <= 127)
+		return (1);
+	else
+		return (0);
 }
+/*
+#include <stdio.h>
+int	main(void)
+{
+	int c = 127;
+	if (ft_isascii(c) == 1)
+		printf("is ascii\n");
+	else
+		printf("is not ascii\n");
+	return (0);
+}
+*/

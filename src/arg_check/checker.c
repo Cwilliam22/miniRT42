@@ -6,11 +6,14 @@
 /*   By: ktiomico <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:12:54 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/09/09 09:56:30 by ktiomico         ###   ########.fr       */
+/*   Updated: 2025/09/09 10:56:02 by ktiomico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+#include "libft.h"
+
+static t_bool	check_rt_extension(char *filename);
 
 t_bool	arg_check(int ac, char **av)
 {
@@ -34,12 +37,12 @@ t_bool	arg_check(int ac, char **av)
 	return (TRUE);
 }
 
-t_bool	check_rt_extension(char *filename)
+static t_bool	check_rt_extension(char *filename)
 {
 	int	len;
 
 	len = ft_strlen(filename);
 	if (len < 3)
 		return (FALSE);
-	return (ft_strcmp(filename + len - 3, ".rt") == 0);
+	return (ft_strncmp(filename + len - 3, ".rt", 3) == 0);
 }
