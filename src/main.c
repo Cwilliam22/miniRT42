@@ -16,6 +16,5 @@ int	main(int ac, char **av)
 {
 	if (!arg_check(ac, av))
 		return (1);
-
 	return (0);
 }

@@ -29,9 +29,9 @@
 # define ERROR 1
 
 /* Macros for strings */
-# define ARG_INVALID_PLUS RED"Error: Too many arguments"RESET"\n"
-# define ARG_INVALID_MINUS RED"Error: Too few arguments"RESET"\n"
-# define ARG_USAGE YELLOW"Usage: ./minirt [file.rt]"RESET"\n"
-# define FILE_INVALID RED"Error: Provide a valid file *.rt"RESET"\n"
+# define ARG_INVALID_PLUS "\e[31mError: Too many arguments\e[0m\n"
+# define ARG_INVALID_MINUS "\e[31mError: Too few arguments\e[0m\n"
+# define ARG_USAGE "\e[33mUsage: ./minirt [file.rt]\e[0m\n"
+# define FILE_INVALID "\e[31mError: Provide a valid file *.rt\e[0m\n"
 
 #endif
