@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
-#include "libft.h"
+#include "../../include/minirt.h"
 
 static t_bool	check_rt_extension(char *filename);
 

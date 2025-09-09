@@ -21,6 +21,9 @@
 # include <math.h>
 # include <unistd.h>
 
+/* libft */
+# include "../libft/libft.h"
+
 /* project header files */
 # include "constants.h"
 # include "structures.h"

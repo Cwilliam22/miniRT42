@@ -100,6 +100,9 @@ typedef struct s_scene
 	t_sphere	*spheres;
 	t_plane		*planes;
 	t_cylinder	*cylinders;
+	int			ambient_count;
+	int			camera_count;
+	int			light_count;
 	int			sphere_count;
 	int			plane_count;
 	int			cylinder_count;

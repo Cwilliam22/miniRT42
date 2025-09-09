@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   constants.h                                        :+:      :+:    :+:   */
+/*   vector_validation.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktiomico <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/09 09:42:44 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/09/09 09:42:44 by ktiomico         ###   ########.fr       */
+/*   Created: 2025/09/09 16:30:00 by ktiomico          #+#    #+#             */
+/*   Updated: 2025/09/09 16:30:00 by ktiomico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONSTANTS_H
-# define CONSTANTS_H
+#include "../../include/minirt.h"
 
-# define ARG_INVALID_MINUS "Error: Too few arguments\n"
-# define ARG_INVALID_PLUS "Error: Too many arguments\n"
-# define ARG_USAGE "Usage: ./minirt <scene.rt>\n"
-# define FILE_INVALID "Error: Invalid file\n"
-# define EXT_INVALID "Error: File must have .rt extension\n"
+t_bool	is_normalized_vector(t_vector *vec)
+{
+	double	magnitude;
 
-#endif
+	magnitude = vec->x * vec->x + vec->y * vec->y + vec->z * vec->z;
+	if (magnitude < 0.99 || magnitude > 1.01)
+	{
+		return (FALSE);
+	}
+	return (TRUE);
+}
