@@ -9,9 +9,43 @@ RED    = \033[31m
 NAME   = minirt
 
 # Compiler / flags
-CC        = cc
-CFLAGS    = -Wall -Wextra -Werror -lXext -lX11 -lm -g -I./include -I./libft
-LIBFT     = -L./libft -lft
+CC      = cc
+CFLAGS  = -Wall -Wextra -Werror -g
+INCLUDES = -I./include -I./libft
+
+# Libft
+LIBFT_DIR = ./libft
+LIBFT_A   = $(LIBFT_DIR)/libft.a
+LIBFT_INC = -I$(LIBFT_DIR)
+LIBFT_LNK = -L$(LIBFT_DIR) -lft
+
+# OS detection
+UNAME_S := $(shell uname -s)
+
+# sous_dossier
+MLX_ROOT = mlx
+
+ifeq ($(UNAME_S), Darwin)            # macOS
+	MLX_DIR   = $(MLX_ROOT)/mlx_macOS
+	MLX_A     = $(MLX_DIR)/libmlx.a
+	MLX_INC   = -I$(MLX_DIR)
+	MLX_LNK   = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
+	# Evite les warnings OpenGL déprécié sur macOS
+	CFLAGS   += -DGL_SILENCE_DEPRECATION
+else ifeq ($(UNAME_S), Linux)        # Linux
+	MLX_DIR   = $(MLX_ROOT)/mlx_linux
+	MLX_A     = $(MLX_DIR)/libmlx.a
+	MLX_INC   = -I$(MLX_DIR)
+	MLX_LNK   = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
+else                                  # Autre
+	$(error OS non supporté automatiquement. Ajuste MLX_DIR/flags.)
+endif
+
+INCLUDES += $(MLX_INC) $(LIBFT_INC)
+
+# Link flags (final ld)
+LDFLAGS =
+LIBS    = $(MLX_LNK) $(LIBFT_LNK)
 
 # Directories
 SRCDIR = ./src
@@ -34,41 +68,51 @@ $(OBJDIR):
 # Compile source files to object files
 $(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
 	@printf "$(BLUE)Compiling $<...$(RESET)\n"
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
-libft:
+# libft
+libft: $(LIBFT_A)
+$(LIBFT_A):
 	@printf "$(BLUE)Building libft...$(RESET)\n"
-	@$(MAKE) -C libft --no-print-directory > /dev/null 2>&1
+	@$(MAKE) -C $(LIBFT_DIR) --no-print-directory > /dev/null
 	@printf "$(GREEN)✓ libft built.$(RESET)\n"
 
-$(NAME): libft $(OBJS)
+# mlx
+mlx: $(MLX_A)
+$(MLX_A):
+	@printf "$(BLUE)Building MiniLibX in $(MLX_DIR)...$(RESET)\n"
+	@$(MAKE) -C $(MLX_DIR) --no-print-directory > /dev/null || true
+	@printf "$(GREEN)✓ MiniLibX ready (or already built).$(RESET)\n"
+
+$(NAME): libft mlx $(OBJS)
 	@printf "$(BLUE)Linking $(NAME)...$(RESET)\n"
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+	@$(CC) $(LDFLAGS) $(OBJS) $(LIBS) -o $(NAME)
 	@printf "$(GREEN)✓ $(NAME) created.$(RESET)\n"
 
 clean:
 	@printf "$(RED)Cleaning object files...$(RESET)\n"
 	@$(RM) -rf $(OBJDIR)
-	@$(MAKE) -C libft clean --no-print-directory > /dev/null 2>&1
+	@$(MAKE) -C $(LIBFT_DIR) clean --no-print-directory > /dev/null || true
+	@$(MAKE) -C $(MLX_DIR) clean --no-print-directory > /dev/null || true
 	@printf "$(GREEN)✓ Objects removed.$(RESET)\n"
 
 fclean: clean
 	@printf "$(RED)Removing $(NAME)...$(RESET)\n"
 	@$(RM) $(NAME)
-	@$(MAKE) -C libft fclean --no-print-directory > /dev/null 2>&1
+	@$(MAKE) -C $(LIBFT_DIR) fclean --no-print-directory > /dev/null || true
 	@printf "$(GREEN)✓ Full clean done.$(RESET)\n"
 
 re: fclean all
 
-
 # Help rule
 help:
 	@printf "$(BLUE)Available targets:$(RESET)\n"
-	@printf "  $(GREEN)make$(RESET)        - Build the minirt program\n"
-	@printf "  $(GREEN)make clean$(RESET)  - Remove object files\n"
+	@printf "  $(GREEN)make$(RESET)        - Build the $(NAME) program\n"
+	@printf "  $(GREEN)make clean$(RESET)  - Remove object files (and clean libs)\n"
 	@printf "  $(GREEN)make fclean$(RESET) - Remove all generated files\n"
 	@printf "  $(GREEN)make re$(RESET)     - Rebuild everything (clean build)\n"
-	@printf "  $(GREEN)make libft$(RESET)  - Build libft\n"
+	@printf "  $(GREEN)make libft$(RESET)  - Build libft only\n"
+	@printf "  $(GREEN)make mlx$(RESET)    - Build MiniLibX only\n"
 	@printf "  $(GREEN)make help$(RESET)   - Show this help message\n"
 
-.PHONY: all clean fclean re help libft
+.PHONY: all clean fclean re help libft mlx
