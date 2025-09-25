@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   constants.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktiomico <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: wcapt <wcapt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:42:44 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/09/09 09:42:44 by ktiomico         ###   ########.fr       */
+/*   Updated: 2025/09/19 17:06:47 by wcapt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,8 @@
 # define ARG_USAGE "Usage: ./minirt <scene.rt>\n"
 # define FILE_INVALID "Error: Invalid file\n"
 # define EXT_INVALID "Error: File must have .rt extension\n"
+
+# define WIDTH 800
+# define HEIGHT 600
 
 #endif

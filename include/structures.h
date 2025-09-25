@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktiomico <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: wcapt <wcapt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:42:53 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/09/09 10:54:25 by ktiomico         ###   ########.fr       */
+/*   Updated: 2025/09/25 14:17:16 by wcapt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct s_camera
 	t_vector	position;
 	t_vector	orientation;
 	double		fov;
+	double		viewport;
 }	t_camera;
 
 typedef struct s_ambient
@@ -64,6 +65,18 @@ typedef struct s_light
 	double		brightness;
 	t_color		color;
 }	t_light;
+
+/* ============ HIT ============ */
+
+typedef struct s_hit
+{
+	t_bool    hit;
+    double    delta;
+    t_vector  p;
+    t_color   color;
+    int       object_type;
+    void     *object;
+}	t_hit;
 
 /* ============ GEOMETRIC OBJECTS ============ */
 
@@ -105,7 +118,9 @@ typedef struct s_scene
 	int			light_count;
 	int			sphere_count;
 	int			plane_count;
-	int			cylinder_count;
+	int			cylinder_cou12nt;
+	void		*mlx;
+	void		*mlx_win;
 }	t_scene;
 
 /* ============ PROGRAM DATA ============ */

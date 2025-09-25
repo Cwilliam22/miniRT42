@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototypes.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktiomico <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: wcapt <wcapt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:43:00 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/09/09 14:46:59 by ktiomico         ###   ########.fr       */
+/*   Updated: 2025/09/25 14:20:06 by wcapt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,36 @@ void		free_split(char **split);
 /* ============ MATH ============ */
 t_bool		parse_vector(char *str, t_vector *vec);
 t_bool		parse_color(char *str, t_color *color);
+
+/* ============ RAYTRACING ============ */
+
+// calculs.c
+int         radian_to_degree(double rad);
+int         degree_to_radian(int deg);
+
+// ray_collision.c
+int         ray_intersec(double vx, double vy, double vz, t_scene *scene);
+
+// sphere.c
+int         intersec_sphere(double vx, double vy, double vz, t_scene *scene);
+int         ray_collision_sp();
+
+// plane.c
+int         intersec_plane(double vx, double vy, double vz, t_scene *scene);
+
+// cylinder.c
+int         intersec_cylinder(double vx, double vy, double vz, t_scene *scene);
+
+// raytracer.c
+int         init_mlx(t_scene *scene);
+int         init_pixel(t_scene *scene, t_ray *ray);
+int         parse_pixel(t_scene *scene, t_ray *ray);
+int         raytracer(t_scene *scene, t_ray *ray);
+
+// trigonometry.c
+int         viewport_size(t_scene *scene);
+
+// vectors.c
+int         is_perpendicular(t_vector *v1, t_vector *v2);
 
 #endif

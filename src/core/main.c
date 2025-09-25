@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktiomico <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: wcapt <wcapt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 08:12:30 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/09/09 14:34:25 by ktiomico         ###   ########.fr       */
+/*   Updated: 2025/09/25 14:17:51 by wcapt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 int	main(int ac, char **av)
 {
 	t_scene	scene;
-
+	t_ray	ray;
+	
 	if (!arg_check(ac, av))
 		return (1);
 	init_scene(&scene);
@@ -30,6 +31,11 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	print_scene_summary(&scene);
+	if (!raytracer(&scene, &ray))
+	{
+		cleanup_scene(&scene);
+		return (1);
+	}
 	cleanup_scene(&scene);
 	return (0);
 }
