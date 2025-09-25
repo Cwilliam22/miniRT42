@@ -6,7 +6,7 @@
 /*   By: wcapt <wcapt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:42:53 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/09/25 14:17:16 by wcapt            ###   ########.fr       */
+/*   Updated: 2025/09/25 15:00:18 by wcapt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,12 @@ typedef struct s_light
 	t_color		color;
 }	t_light;
 
+typedef struct s_viewport
+{
+	double	width;
+	double	height;
+}	t_viewport;
+
 /* ============ HIT ============ */
 
 typedef struct s_hit
@@ -113,12 +119,13 @@ typedef struct s_scene
 	t_sphere	*spheres;
 	t_plane		*planes;
 	t_cylinder	*cylinders;
+	t_viewport	*viewport;
 	int			ambient_count;
 	int			camera_count;
 	int			light_count;
 	int			sphere_count;
 	int			plane_count;
-	int			cylinder_cou12nt;
+	int			cylinder_count;
 	void		*mlx;
 	void		*mlx_win;
 }	t_scene;
