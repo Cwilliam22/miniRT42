@@ -6,7 +6,7 @@
 /*   By: wcapt <wcapt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:42:53 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/09/25 15:00:18 by wcapt            ###   ########.fr       */
+/*   Updated: 2025/09/29 18:22:06 by wcapt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,9 @@ typedef struct s_viewport
 {
 	double	width;
 	double	height;
+	double px_x;
+	double px_y;
+
 }	t_viewport;
 
 /* ============ HIT ============ */

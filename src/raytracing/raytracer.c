@@ -46,8 +46,6 @@ int parse_pixel(t_scene *scene, t_ray *ray)
 {
     int    x;
     int    y;
-    double u;
-    double v;
 
 	x = 0;
 	y = 0;
@@ -63,15 +61,15 @@ int parse_pixel(t_scene *scene, t_ray *ray)
 
 			// Initialize ray with origin and direction for each pixel
 			ray->origin = scene->camera.position;
-            ray->direction.x = ((x + 0.5) / (double)WIDTH) - scene->camera.position.x;
-            ray->direction.y = ((y + 0.5) / (double)HEIGHT) - scene->camera.position.y;
-			ray->direction.z = (-1.0) - scene->camera.position.z;
+            ray->direction.x = -scene->viewport->width  * 0.5 + (x + 0.5) * scene->viewport->px_x;
+			ray->direction.y =  scene->viewport->height * 0.5 - (y + 0.5) * scene->viewport->px_y;
+			ray->direction.z =  scene->camera.viewport;  
             init_pixel(scene, ray);
             y++;
         }
         x++;
     }
-    return 1;
+    return (1);
 }
 
 int raytracer(t_scene *scene, t_ray *ray)
