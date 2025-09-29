@@ -46,6 +46,9 @@ int parse_pixel(t_scene *scene, t_ray *ray)
 {
     int    x;
     int    y;
+	double X;
+	double Y;
+	double Z;
 
 	x = 0;
 	y = 0;
@@ -61,9 +64,14 @@ int parse_pixel(t_scene *scene, t_ray *ray)
 
 			// Initialize ray with origin and direction for each pixel
 			ray->origin = scene->camera.position;
-            ray->direction.x = -scene->viewport->width  * 0.5 + (x + 0.5) * scene->viewport->px_x;
-			ray->direction.y =  scene->viewport->height * 0.5 - (y + 0.5) * scene->viewport->px_y;
-			ray->direction.z =  scene->camera.viewport;  
+			// Position pixel with camera's view
+            X = -scene->viewport->width  * 0.5 + (x + 0.5) * scene->viewport->px_x;
+			Y =  scene->viewport->height * 0.5 - (y + 0.5) * scene->viewport->px_y;
+			Z =  scene->camera.viewport;
+			// Position pixel with world's view
+			ray->direction.x = 0; // Not finished
+			ray->direction.y = 0; // *Same
+			ray->direction.z = 0; // *Same
             init_pixel(scene, ray);
             y++;
         }
