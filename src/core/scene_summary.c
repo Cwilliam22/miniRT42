@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene_summary.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktiomico <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: wcapt <wcapt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 17:00:00 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/09/09 17:00:00 by ktiomico         ###   ########.fr       */
+/*   Updated: 2025/10/01 16:07:49 by wcapt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ void	print_scene_summary(t_scene *scene)
 	printf("\n=== SCENE LOADED SUCCESSFULLY ===\n");
 	printf("Camera: pos=(%.2f,%.2f,%.2f), dir=(%.2f,%.2f,%.2f), fov=%.2f\n",
 		scene->camera.position.x, scene->camera.position.y,
-		scene->camera.position.z, scene->camera.orientation.x,
-		scene->camera.orientation.y, scene->camera.orientation.z,
+		scene->camera.position.z, scene->camera.forward.x,
+		scene->camera.forward.y, scene->camera.forward.z,
 		scene->camera.fov);
 	printf("Ambient: ratio=%.2f, color=(%.0f,%.0f,%.0f)\n",
 		scene->ambient.ratio, scene->ambient.color.r * 255,

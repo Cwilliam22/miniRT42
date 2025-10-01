@@ -19,12 +19,12 @@ static t_bool	validate_camera_vectors(char **tokens, t_scene *scene)
 		printf("Error: Invalid camera position\n");
 		return (FALSE);
 	}
-	if (!parse_vector(tokens[2], &scene->camera.orientation))
+	if (!parse_vector(tokens[2], &scene->camera.forward))
 	{
 		printf("Error: Invalid camera orientation\n");
 		return (FALSE);
 	}
-	if (!is_normalized_vector(&scene->camera.orientation))
+	if (!is_normalized_vector(&scene->camera.forward))
 	{
 		printf("Error: Camera orientation must be normalized\n");
 		return (FALSE);

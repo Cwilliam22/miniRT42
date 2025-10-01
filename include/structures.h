@@ -6,7 +6,7 @@
 /*   By: wcapt <wcapt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:42:53 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/09/29 18:22:06 by wcapt            ###   ########.fr       */
+/*   Updated: 2025/10/01 16:07:28 by wcapt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,9 @@ typedef struct s_ray
 typedef struct s_camera
 {
 	t_vector	position;
-	t_vector	orientation;
+	t_vector	forward;
+	t_vector	right;
+	t_vector	up;
 	double		fov;
 	double		viewport;
 }	t_camera;

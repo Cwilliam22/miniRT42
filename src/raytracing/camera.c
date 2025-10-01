@@ -7,9 +7,9 @@ int make_base_cam(t_scene *scene)
 
 int make_orientation_cam(t_scene *scene)
 {
-	scene->camera.orientation.x = -1;
-    scene->camera.orientation.y = 0;
-    scene->camera.orientation.z = 0;
+	scene->camera.forward.x = -1;
+    scene->camera.forward.y = 0;
+    scene->camera.forward.z = 0;
     make_base_cam(scene);
     return (1);
 }
