@@ -6,7 +6,7 @@
 /*   By: wcapt <wcapt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:42:53 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/10/01 16:07:28 by wcapt            ###   ########.fr       */
+/*   Updated: 2025/10/01 17:14:18 by wcapt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,13 @@ typedef struct s_ray
 
 /* ============ SCENE ELEMENTS ============ */
 
+typedef struct s_base_world
+{
+	t_vector	forward;
+	t_vector	right;
+	t_vector	up;
+}	t_base_world;
+
 typedef struct s_camera
 {
 	t_vector	position;
@@ -52,7 +59,7 @@ typedef struct s_camera
 	t_vector	right;
 	t_vector	up;
 	double		fov;
-	double		viewport;
+	double		d;
 }	t_camera;
 
 typedef struct s_ambient
@@ -118,21 +125,22 @@ typedef struct s_cylinder
 
 typedef struct s_scene
 {
-	t_camera	camera;
-	t_ambient	ambient;
-	t_light		light;
-	t_sphere	*spheres;
-	t_plane		*planes;
-	t_cylinder	*cylinders;
-	t_viewport	*viewport;
-	int			ambient_count;
-	int			camera_count;
-	int			light_count;
-	int			sphere_count;
-	int			plane_count;
-	int			cylinder_count;
-	void		*mlx;
-	void		*mlx_win;
+	t_camera		camera;
+	t_base_world	base_world;
+	t_ambient		ambient;
+	t_light			light;
+	t_sphere		*spheres;
+	t_plane			*planes;
+	t_cylinder		*cylinders;
+	t_viewport		*viewport;
+	int				ambient_count;
+	int				camera_count;
+	int				light_count;
+	int				sphere_count;
+	int				plane_count;
+	int				cylinder_count;
+	void			*mlx;
+	void			*mlx_win;
 }	t_scene;
 
 /* ============ PROGRAM DATA ============ */

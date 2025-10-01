@@ -6,7 +6,7 @@
 /*   By: wcapt <wcapt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:43:00 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/10/01 15:29:18 by wcapt            ###   ########.fr       */
+/*   Updated: 2025/10/01 17:40:38 by wcapt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,18 +76,18 @@ int         raytracer(t_scene *scene, t_ray *ray);
 int         viewport_size(t_scene *scene);
 
 // vectors.c
-double      scalar_product(t_vector *v1, t_vector *v2);
-t_vector    vector_product(t_vector *v1, t_vector *v2);
-double      vector_norm(t_vector *v);
+double      scalar_product(t_vector v1, t_vector v2);
+t_vector    vector_product(t_vector v1, t_vector v2);
+double      vector_norm(t_vector v);
 t_vector    vector_scale(t_vector v, double n);
-t_vector    vector_normalize(t_vector *v);
+t_vector    vector_normalize(t_vector v);
 
 // camera.c
 int         make_base_cam(t_scene *scene);
 int         make_orientation_cam(t_scene *scene);
 
 // raytracing_utils.c
-int         is_perpendicular(t_vector *v1, t_vector *v2);
+int         is_perpendicular(t_vector v1, t_vector v2);
 
 
 #endif

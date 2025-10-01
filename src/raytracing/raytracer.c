@@ -67,7 +67,7 @@ int parse_pixel(t_scene *scene, t_ray *ray)
 			// Position pixel with camera's view
             X = -scene->viewport->width  * 0.5 + (x + 0.5) * scene->viewport->px_x;
 			Y =  scene->viewport->height * 0.5 - (y + 0.5) * scene->viewport->px_y;
-			Z =  scene->camera.viewport;
+			Z =  scene->camera.d;
 			// Position pixel with world's view
 			ray->direction.x = 0; // Not finished
 			ray->direction.y = 0; // *Same
@@ -84,6 +84,8 @@ int raytracer(t_scene *scene, t_ray *ray)
 {
 	if (!init_mlx(scene))
 		return (0);
+	if (!make_orientation_cam(scene))
+		retutnn (0);
 	if (!parse_pixel(scene, ray))
 	{
 		mlx_destroy_window(scene->mlx, scene->mlx_win);

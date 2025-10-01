@@ -10,7 +10,7 @@ int viewport_size(t_scene *scene)
 
     fov_rad = degree_to_radian(scene->camera.fov);
     ratio_asp = (double)WIDTH / (double)HEIGHT;
-    scene->viewport->width  = 2.0 * scene->camera.viewport * tan(fov_rad * 0.5);
+    scene->viewport->width  = 2.0 * scene->camera.d * tan(fov_rad * 0.5);
     scene->viewport->height = scene->viewport->width / ratio_asp;
     scene->viewport->px_x = scene->viewport->width  / (double)WIDTH;
 	scene->viewport->px_y = scene->viewport->height / (double)HEIGHT;
