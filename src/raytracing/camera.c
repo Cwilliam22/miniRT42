@@ -10,8 +10,9 @@ int init_base_world(t_base_world *base)
 
 int make_base_cam(t_scene *scene)
 {
-    scene->camera.right = vector_normalize(vector_product(scene->camera.forward, scene->base_world.up));
-    scene->camera.up = vector_normalize(vector_product(scene->camera.right, scene->camera.forward));
+    scene->camera.forward = vector_normalize(scene->camera.forward);
+    scene->camera.right = vector_normalize(vector_product(scene->base_world.up, scene->camera.forward));
+    scene->camera.up = vector_normalize(vector_product(scene->camera.forward, scene->camera.right));
     return (1);
 }
 

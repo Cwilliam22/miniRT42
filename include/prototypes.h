@@ -6,7 +6,7 @@
 /*   By: wcapt <wcapt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:43:00 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/10/01 17:40:38 by wcapt            ###   ########.fr       */
+/*   Updated: 2025/10/03 14:06:43 by wcapt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int         intersec_cylinder(double vx, double vy, double vz, t_scene *scene);
 // raytracer.c
 int         init_mlx(t_scene *scene);
 int         init_pixel(t_scene *scene, t_ray *ray);
+t_vector    change_base_ray(t_vector v, t_scene *scene);
 int         parse_pixel(t_scene *scene, t_ray *ray);
 int         raytracer(t_scene *scene, t_ray *ray);
 

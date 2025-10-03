@@ -42,6 +42,24 @@ int	init_pixel(t_scene *scene, t_ray *ray)
 	return (1);
 }
 
+// linear combination
+// Dmonde = Pmonde - Ocam = X * right + Y * up + Z * forward
+// (Dx, Dy, Dz) = X (Rx, Ry, Rz) + Y (Ux, Uy, Uz) + Z (Fx, Fy, Fz)
+// Dx = X * right.x + Y * up.x + Z * forward.x
+// Dy = X * right.y + Y * up.y + Z * forward.y
+// Dz = X * right.z + Y * up.z + Z * forward.z
+t_vector change_base_ray(t_vector v, t_scene *scene)
+{
+	t_vector result;
+	t_camera cam;
+
+	cam = scene->camera;
+	result.x = v.x * cam.right.x + v.y * cam.up.x + v.z * cam.forward.x;
+	result.y = v.x * cam.right.y + v.y * cam.up.y + v.z * cam.forward.y;
+	result.z = v.x * cam.right.z + v.y * cam.up.z + v.z * cam.forward.z;
+	return (result);
+}
+
 int parse_pixel(t_scene *scene, t_ray *ray)
 {
     int    x;
@@ -69,9 +87,7 @@ int parse_pixel(t_scene *scene, t_ray *ray)
 			Y =  scene->viewport->height * 0.5 - (y + 0.5) * scene->viewport->px_y;
 			Z =  scene->camera.d;
 			// Position pixel with world's view
-			ray->direction.x = 0; // Not finished
-			ray->direction.y = 0; // *Same
-			ray->direction.z = 0; // *Same
+			ray->direction = vector_normalize(change_base_ray((t_vector){X, Y, Z}, scene));
             init_pixel(scene, ray);
             y++;
         }
