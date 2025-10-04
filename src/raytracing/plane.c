@@ -1,6 +1,10 @@
 #include "../../include/minirt.h"
 
-int intersec_plane(double vx, double vy, double vz, t_scene *scene)
+
+// (x, y, z) = point on the plane
+// (px, py, pz) = vector normal to the plane
+// need to normalize the normal vector
+int intersec_plane(t_ray *ray, t_scene *scene)
 {
     return (1);
 }

@@ -1,12 +1,12 @@
 #include "../../include/minirt.h"
 
-int ray_intersec(double vx, double vy, double vz, t_scene *scene)
+int ray_intersec(t_ray *ray, t_scene *scene)
 {
-    if (!ray_sphere(vx, vy, vz, scene))
+    if (!ray_sphere(ray, scene))
         return (0);
-    if (!ray_plane(vx, vy, vz, scene))
+    if (!ray_plane(ray, scene))
         return (0);
-    if (!ray_cylinder(vx, vy, vz, scene))
+    if (!ray_cylinder(ray, scene))
         return (0);
     return (1);
 }

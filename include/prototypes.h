@@ -6,7 +6,7 @@
 /*   By: wcapt <wcapt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:43:00 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/10/03 14:06:43 by wcapt            ###   ########.fr       */
+/*   Updated: 2025/10/03 17:46:47 by wcapt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,17 @@ int         radian_to_degree(double rad);
 int         degree_to_radian(int deg);
 
 // ray_collision.c
-int         ray_intersec(double vx, double vy, double vz, t_scene *scene);
+int         ray_intersec(t_ray *ray, t_scene *scene);
 
 // sphere.c
-int         intersec_sphere(double vx, double vy, double vz, t_scene *scene);
+int         intersec_sphere(t_ray *ray, t_scene *scene);
 int         ray_collision_sp();
 
 // plane.c
-int         intersec_plane(double vx, double vy, double vz, t_scene *scene);
+int         intersec_plane(t_ray *ray, t_scene *scene);
 
 // cylinder.c
-int         intersec_cylinder(double vx, double vy, double vz, t_scene *scene);
+int         intersec_cylinder(t_ray *ray, t_scene *scene);
 
 // raytracer.c
 int         init_mlx(t_scene *scene);

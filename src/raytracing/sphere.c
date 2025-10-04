@@ -7,7 +7,7 @@ int ray_collision_sp()
     return (1);
 }
 
-int intersec_sphere(double vx, double vy, double vz, t_scene *scene)
+int intersec_sphere(t_ray *ray, t_scene *scene)
 {
     int intersec;
 

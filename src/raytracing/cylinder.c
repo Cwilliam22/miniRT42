@@ -1,6 +1,6 @@
 #include "../../include/minirt.h"
 
-int intersec_cylinder(double vx, double vy, double vz, t_scene *scene)
+int intersec_cylinder(t_ray *ray, t_scene *scene)
 {
     int intersec;
 

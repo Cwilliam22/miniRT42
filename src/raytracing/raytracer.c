@@ -38,7 +38,6 @@ int init_mlx(t_scene *scene)
 
 int	init_pixel(t_scene *scene, t_ray *ray)
 {
-	
 	return (1);
 }
 

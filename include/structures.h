@@ -6,7 +6,7 @@
 /*   By: wcapt <wcapt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:42:53 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/10/01 17:14:18 by wcapt            ###   ########.fr       */
+/*   Updated: 2025/10/03 17:43:44 by wcapt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_ray
 {
 	t_vector	origin;
 	t_vector	direction;
+	t_color		color;
 }	t_ray;
 
 /* ============ SCENE ELEMENTS ============ */
