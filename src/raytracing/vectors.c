@@ -52,4 +52,3 @@ t_vector vector_normalize(t_vector v)
 	result.z = v.z * invL;
 	return (result);
 }
-

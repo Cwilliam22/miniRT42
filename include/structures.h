@@ -6,7 +6,7 @@
 /*   By: wcapt <wcapt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:42:53 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/10/03 17:43:44 by wcapt            ###   ########.fr       */
+/*   Updated: 2025/10/09 18:09:30 by wcapt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ typedef struct s_plane
 	t_vector	point;
 	t_vector	normal;
 	t_color		color;
+	double		d;
 }	t_plane;
 
 typedef struct s_cylinder
