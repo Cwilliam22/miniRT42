@@ -6,7 +6,7 @@
 /*   By: wcapt <wcapt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:43:00 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/10/03 17:46:47 by wcapt            ###   ########.fr       */
+/*   Updated: 2025/10/22 17:49:49 by wcapt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,10 @@ int         degree_to_radian(int deg);
 int         ray_intersec(t_ray *ray, t_scene *scene);
 
 // sphere.c
+t_vector    point_value(t_ray *ray, double t);
+void        get_color(t_ray *ray, t_scene *scene);
+void        get_delta(t_scene *scene, t_ray *ray);
 int         intersec_sphere(t_ray *ray, t_scene *scene);
-int         ray_collision_sp();
 
 // plane.c
 int         intersec_plane(t_ray *ray, t_scene *scene);
@@ -89,6 +91,8 @@ int         make_orientation_cam(t_scene *scene);
 
 // raytracing_utils.c
 int         is_perpendicular(t_vector v1, t_vector v2);
+double      ft_sqr(double x);
+t_vector	get_nearest_intersec(t_vector p1, t_vector p2);
 
 
 #endif

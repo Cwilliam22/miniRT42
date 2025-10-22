@@ -6,7 +6,7 @@
 /*   By: wcapt <wcapt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:42:53 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/10/09 18:09:30 by wcapt            ###   ########.fr       */
+/*   Updated: 2025/10/22 17:09:53 by wcapt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_ray
 {
 	t_vector	origin;
 	t_vector	direction;
+	t_hit		*hit;
 	t_color		color;
 }	t_ray;
 
@@ -91,7 +92,7 @@ typedef struct s_hit
 {
 	t_bool    hit;
     double    delta;
-    t_vector  p;
+    t_vector  inter;
     t_color   color;
     int       object_type;
     void     *object;
