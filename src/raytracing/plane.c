@@ -37,6 +37,7 @@ int intersec_plane(t_ray *ray, t_scene *scene)
     double  den;
     t_vector intersec;
 
+    // Vérifier if plane est confondu avec la droite (ray)
     scene->planes->d = value_d(scene->planes->normal, scene->planes->point);
     num = scalar_product(scene->planes->normal, ray->origin) + scene->planes->d;
     den = scalar_product(scene->planes->normal, ray->direction);
