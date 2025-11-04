@@ -6,7 +6,7 @@
 /*   By: wcapt <wcapt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:43:00 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/10/22 17:49:49 by wcapt            ###   ########.fr       */
+/*   Updated: 2025/11/04 16:57:31 by wcapt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,14 @@ int         ray_intersec(t_ray *ray, t_scene *scene);
 // sphere.c
 t_vector    point_value(t_ray *ray, double t);
 void        get_color(t_ray *ray, t_scene *scene);
-void        get_delta(t_scene *scene, t_ray *ray);
+void        get_delta_sphere(t_scene *scene, t_ray *ray);
 int         intersec_sphere(t_ray *ray, t_scene *scene);
 
 // plane.c
 int         intersec_plane(t_ray *ray, t_scene *scene);
 
 // cylinder.c
+void        get_delta_cylinder(t_scene *scene, t_ray *ray);
 int         intersec_cylinder(t_ray *ray, t_scene *scene);
 
 // raytracer.c

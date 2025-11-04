@@ -41,7 +41,7 @@ void	get_color(t_ray *ray, t_scene *scene)
 // => Substitution dans l'équation de la sphère
 //      A = a^2 + b^2 + c^2
 //      B = 2 * [a(Xa - Xc) + b(Ya - Yc) + c(Za - Zc)]
-//      C = (Xa - Xc)^2 + (Ya - Yc)^2 + (Za - Zc)^2 - r^
+//      C = (Xa - Xc)^2 + (Ya - Yc)^2 + (Za - Zc)^2 - r^2
 // => Formule de Viète
 //      Delta = B^2 - 4AC
 //      t1, t2 = (-B ± √delta) / 2A
@@ -49,7 +49,7 @@ void	get_color(t_ray *ray, t_scene *scene)
 //      Xi = Xa + a * ti
 //      Yi = Ya + b * ti
 //      Zi = Za + c * ti
-void get_delta(t_scene *scene, t_ray *ray)
+void get_delta_sphere(t_scene *scene, t_ray *ray)
 {
 	ray->hit->inter.x = ft_sqr(ray->direction.x) + ft_sqr(ray->direction.y) +
 		ft_sqr(ray->direction.z);
@@ -67,12 +67,9 @@ void get_delta(t_scene *scene, t_ray *ray)
 
 int intersec_sphere(t_ray *ray, t_scene *scene)
 {
-	get_delta(scene, ray);
+	get_delta_sphere(scene, ray);
 	if (ray->hit->delta < 0)
 		return (0);
-	else
-	{
-		get_color(scene, ray);
-		return (1);
-	}
+	get_color(scene, ray);
+	return (1);
 }
