@@ -6,7 +6,7 @@
 /*   By: wcapt <wcapt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:42:53 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/10/22 17:09:53 by wcapt            ###   ########.fr       */
+/*   Updated: 2025/11/10 20:35:03 by wcapt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ typedef struct s_hit
 
 typedef struct s_sphere
 {
+	int			id;
 	t_vector	center;
 	double		radius;
 	t_color		color;
@@ -109,6 +110,7 @@ typedef struct s_sphere
 
 typedef struct s_plane
 {
+	int			id;
 	t_vector	point;
 	t_vector	normal;
 	t_color		color;
@@ -117,6 +119,7 @@ typedef struct s_plane
 
 typedef struct s_cylinder
 {
+	int			id;
 	t_vector	center;
 	t_vector	axis;
 	double		radius;

@@ -39,6 +39,7 @@ t_bool	parse_plane(char **tokens, t_scene *scene)
 	plane = &scene->planes[scene->plane_count];
 	if (!validate_plane_params(tokens, plane))
 		return (FALSE);
+	plane->id = scene->plane_count;
 	scene->plane_count++;
 	return (TRUE);
 }
@@ -66,6 +67,7 @@ t_bool	parse_cylinder(char **tokens, t_scene *scene)
 		return (FALSE);
 	if (!validate_cylinder_params(tokens, cylinder))
 		return (FALSE);
+	cylinder->id = scene->cylinder_count;
 	scene->cylinder_count++;
 	return (TRUE);
 }

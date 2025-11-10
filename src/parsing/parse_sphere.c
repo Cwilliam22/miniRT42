@@ -43,6 +43,7 @@ t_bool	parse_sphere(char **tokens, t_scene *scene)
 	sphere = &scene->spheres[scene->sphere_count];
 	if (!validate_sphere_params(tokens, sphere))
 		return (FALSE);
+	sphere->id = scene->sphere_count;
 	scene->sphere_count++;
 	return (TRUE);
 }

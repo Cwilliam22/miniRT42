@@ -8,17 +8,19 @@ static void	print_objects(t_scene *scene)
 	while (i < scene->sphere_count)
 	{
 		printf("  Sphere %d: center=(%.2f,%.2f,%.2f), radius=%.2f\n",
-			i + 1, scene->spheres[i].center.x, scene->spheres[i].center.y,
-			scene->spheres[i].center.z, scene->spheres[i].radius);
+	        scene->spheres[i].id, scene->spheres[i].center.x,
+	        scene->spheres[i].center.y, scene->spheres[i].center.z,
+	        scene->spheres[i].radius);
 		i++;
 	}
 	i = 0;
 	while (i < scene->plane_count)
 	{
 		printf("  Plane %d: point=(%.2f,%.2f,%.2f), normal=(%.2f,%.2f,%.2f)\n",
-			i + 1, scene->planes[i].point.x, scene->planes[i].point.y,
-			scene->planes[i].point.z, scene->planes[i].normal.x,
-			scene->planes[i].normal.y, scene->planes[i].normal.z);
+	    	scene->planes[i].id, scene->planes[i].point.x,
+	        scene->planes[i].point.y, scene->planes[i].point.z,
+	        scene->planes[i].normal.x, scene->planes[i].normal.y,
+	        scene->planes[i].normal.z);
 		i++;
 	}
 }
@@ -30,9 +32,9 @@ static void	print_cylinders(t_scene *scene)
 	i = 0;
 	while (i < scene->cylinder_count)
 	{
-		printf("  Cylinder %d: center=(%.2f,%.2f,%.2f), ", i + 1,
-			scene->cylinders[i].center.x, scene->cylinders[i].center.y,
-			scene->cylinders[i].center.z);
+		printf("  Cylinder %d: center=(%.2f,%.2f,%.2f), ",
+	        scene->cylinders[i].id, scene->cylinders[i].center.x,
+	        scene->cylinders[i].center.y, scene->cylinders[i].center.z);
 		printf("radius=%.2f, height=%.2f\n", scene->cylinders[i].radius,
 			scene->cylinders[i].height);
 		i++;
