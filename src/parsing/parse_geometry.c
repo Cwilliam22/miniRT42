@@ -27,8 +27,9 @@ t_bool	parse_plane(char **tokens, t_scene *scene)
 	t_plane	*new_planes;
 	t_plane	*plane;
 
-	new_planes = realloc(scene->planes,
-			sizeof(t_plane) * (scene->plane_count + 1));
+	new_planes = ft_realloc(scene->planes,
+				sizeof(t_plane) * scene->plane_count,
+                sizeof(t_plane) * (scene->plane_count + 1));
 	if (!new_planes)
 	{
 		printf("Error: Memory allocation failed\n");

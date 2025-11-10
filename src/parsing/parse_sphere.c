@@ -31,8 +31,9 @@ t_bool	parse_sphere(char **tokens, t_scene *scene)
 	t_sphere	*new_spheres;
 	t_sphere	*sphere;
 
-	new_spheres = realloc(scene->spheres,
-			sizeof(t_sphere) * (scene->sphere_count + 1));
+	new_spheres = ft_realloc(scene->spheres,
+                sizeof(t_sphere) * scene->sphere_count,
+                sizeof(t_sphere) * (scene->sphere_count + 1));
 	if (!new_spheres)
 	{
 		printf("Error: Memory allocation failed\n");

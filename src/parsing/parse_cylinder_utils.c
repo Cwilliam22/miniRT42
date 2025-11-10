@@ -39,8 +39,9 @@ t_cylinder	*allocate_cylinder(t_scene *scene)
 {
 	t_cylinder	*new_cylinders;
 
-	new_cylinders = realloc(scene->cylinders,
-			sizeof(t_cylinder) * (scene->cylinder_count + 1));
+	new_cylinders = new_cylinders = ft_realloc(scene->cylinders,
+                    sizeof(t_cylinder) * scene->cylinder_count,
+                    sizeof(t_cylinder) * (scene->cylinder_count + 1));
 	if (!new_cylinders)
 	{
 		printf("Error: Memory allocation failed\n");
