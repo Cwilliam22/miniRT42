@@ -50,13 +50,13 @@ void get_delta_sphere(t_scene *scene, t_ray *ray, int id)
 	ray->hit->inter.x = ft_sqr(ray->direction.x) + ft_sqr(ray->direction.y) +
 		ft_sqr(ray->direction.z);
 	ray->hit->inter.y = 2 * (ray->direction.x * (ray->origin.x -
-		scene->spheres->center.x) + ray->direction.y *
-		(ray->origin.y - scene->spheres->center.y) + ray->direction.z *
-		(ray->origin.z - scene->spheres->center.z));
-	ray->hit->inter.z = ft_sqr(ray->origin.x - scene->spheres->center.x) +
-		ft_sqr(ray->origin.y - scene->spheres->center.y) +
-		ft_sqr(ray->origin.z - scene->spheres->center.z) -
-		ft_sqr(scene->spheres->radius);
+		scene->sphere[id]->center.x) + ray->direction.y *
+		(ray->origin.y - scene->sphere[id]->center.y) + ray->direction.z *
+		(ray->origin.z - scene->sphere[id]->center.z));
+	ray->hit->inter.z = ft_sqr(ray->origin.x - scene->sphere[id]->center.x) +
+		ft_sqr(ray->origin.y - scene->sphere[id]->center.y) +
+		ft_sqr(ray->origin.z - scene->sphere[id]->center.z) -
+		ft_sqr(scene->sphere[id]->radius);
 	ray->hit->delta = ft_sqr(ray->hit->inter.y) - 4 * ray->hit->inter.x *
 		ray->hit->inter.z;
 }
