@@ -10,25 +10,21 @@ t_vector point_value(t_ray *ray, double t)
 	return (point);
 }
 
-void	get_color(t_ray *ray, t_scene *scene)
+void	get_nearest_point(t_ray *ray, t_scene *scene)
 {
 	double t1;
 	double t2;
 	t_vector inter1;
 	t_vector inter2;
 
-	if (ray->hit->delta == 0)
-	{
-		t1 = -ray->hit->inter.y / (2 * ray->hit->inter.x);
-		return (point_value(ray, t1));
-	}
 	t1 = (-ray->hit->inter.y + sqrt(ray->hit->delta)) /
 		(2 * ray->hit->inter.x);
 	t2 = (-ray->hit->inter.y - sqrt(ray->hit->delta)) /
 		(2 * ray->hit->inter.x);
 	inter1 = point_value(ray, t1);
 	inter2 = point_value(ray, t2);
-	ray->hit->inter = get_nearest_intersec(inter1, inter2);
+	inter1 = get_nearest_intersec(inter1, inter2);
+	ray->hit->inter = get_nearest_intersec(inter1, ray->hit->inter);
 }
 
 // Formules utilisées :
@@ -70,6 +66,6 @@ int intersec_sphere(t_ray *ray, t_scene *scene)
 	get_delta_sphere(scene, ray);
 	if (ray->hit->delta < 0)
 		return (0);
-	get_color(scene, ray);
+	get_nearest_point(scene, ray);
 	return (1);
 }

@@ -44,10 +44,10 @@ int intersec_plane(t_ray *ray, t_scene *scene)
     if (fabs(den) < 1e-12)
         return (0);
     t = - num / den;
-    intersec.x = ray->origin.x + t * ray->direction.x;
-    intersec.y = ray->origin.y + t * ray->direction.y;
-    intersec.z = ray->origin.z + t * ray->direction.z;
-    look_at_color(0);
+    ray->hit->inter.x = ray->origin.x + t * ray->direction.x;
+    ray->hit->inter.y = ray->origin.y + t * ray->direction.y;
+    ray->hit->inter.z = ray->origin.z + t * ray->direction.z;
+    get_nearest_point(scene, ray);
     return (1);
 }
 

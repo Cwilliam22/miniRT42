@@ -54,6 +54,6 @@ int intersec_cylinder(t_ray *ray, t_scene *scene)
     get_delta_cylinder(scene, ray);
 	if (ray->hit->delta < 0)
 		return (0);
-	get_color(scene, ray);
+	get_nearest_point(scene, ray);
 	return (1);
 }
