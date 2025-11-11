@@ -48,7 +48,7 @@ void get_delta_cylindre(t_scene *scene, t_ray *ray)
 		ray->hit->inter.z;
 }
 
-int intersec_cylinder(t_ray *ray, t_scene *scene)
+int intersec_cylinders(t_ray *ray, t_scene *scene)
 {
     vector_normalize(scene->cylinders->axis);
     get_delta_cylinder(scene, ray);

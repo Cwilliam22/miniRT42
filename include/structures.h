@@ -6,7 +6,7 @@
 /*   By: wcapt <wcapt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:42:53 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/11/11 14:55:54 by wcapt            ###   ########.fr       */
+/*   Updated: 2025/11/11 15:09:09 by wcapt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,12 +90,12 @@ typedef struct s_viewport
 
 typedef struct s_hit
 {
-	t_bool    hit;
-    double    delta;
-    t_vector  inter;
-    t_color   color;
-    int       object_type;
-    void     *object;
+	t_bool		hit;
+    double		delta;
+    t_vector 	inter;
+    int			id;
+    int			object_type;
+    void		*object;
 }	t_hit;
 
 /* ============ GEOMETRIC OBJECTS ============ */

@@ -30,7 +30,7 @@ int look_at_color(int n)
 // a * Xo + a * dx * t + b * Yo + b * dy * t + c * Zo + c * dz * t + d = 0
 // a * Xo + b * Yo + c * Zo + d = - a * dx * t - b * dy * t - c * dz * t
 // -(a * Xo + b * Yo + c * Zo + d) / (a * dx + b * dy + c * dz) = t 
-int intersec_plane(t_ray *ray, t_scene *scene)
+int intersec_planes(t_ray *ray, t_scene *scene)
 {
     double  t;
     double  num;
