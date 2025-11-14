@@ -80,6 +80,7 @@ int intersec_spheres(t_ray *ray, t_scene *scene)
 		{
 			ray->hit->object = (void *)scene->spheres;
 			ray->hit->id = i;
+			// send norme btw camera and intersection point for shapes
 		}
 		i++;
 	}

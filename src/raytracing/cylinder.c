@@ -68,6 +68,7 @@ int intersec_cylinders(t_ray *ray, t_scene *scene)
 		{
 			ray->hit->object = (void *)scene->cylinders;
 			ray->hit->id = i;
+			// send norme btw camera and intersection point for shapes
 		}
 		i++;
 	}

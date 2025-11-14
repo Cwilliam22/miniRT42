@@ -37,11 +37,12 @@ int intersec_planes(t_ray *ray, t_scene *scene)
 
     i = 0;
     // Vérifier if plane est confondu avec la droite (ray)
+    actual_nearest_point = ray->hit->inter;
     while (i < scene->plane_count)
     {
-        scene->planes[i].d = value_d(scene->planes->normal, scene->planes->point);
-        num = scalar_product(scene->planes->normal, ray->origin) + scene->planes->d;
-        den = scalar_product(scene->planes->normal, ray->direction);
+        scene->planes[i].d = value_d(scene->planes[i].normal, scene->planes[i].point);
+        num = scalar_product(scene->planes[i].normal, ray->origin) + scene->planes[i].d;
+        den = scalar_product(scene->planes[i].normal, ray->direction);
         if (fabs(den) < 1e-12)
             continue; // parallel to the plane
         t = - num / den;
@@ -52,6 +53,7 @@ int intersec_planes(t_ray *ray, t_scene *scene)
 		{
 			ray->hit->object = (void *)scene->planes;
 			ray->hit->id = i;
+            // send norme btw camera and intersection point for shapes
 		}
 		i++;
     }
