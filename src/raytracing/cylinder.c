@@ -27,33 +27,49 @@
 //      Xi = Xa + a * ti
 //      Yi = Ya + b * ti
 //      Zi = Za + c * ti
-void get_delta_cylindre(t_scene *scene, t_ray *ray)
+void get_delta_cylindre(t_scene *scene, t_ray *ray, int id)
 {
 	ray->hit->inter.x = (ft_sqr(ray->direction.x) + ft_sqr(ray->direction.y) +
-		ft_sqr(ray->direction.z)) - ft_sqr(scene->cylinders->axis.x *
-        ray->direction.x + scene->cylinders->axis.y * ray->direction.y +
-        scene->cylinders->axis.z * ray->direction.z);
+		ft_sqr(ray->direction.z)) - ft_sqr(scene->cylinders[id].axis.x *
+        ray->direction.x + scene->cylinders[id].axis.y * ray->direction.y +
+        scene->cylinders[id].axis.z * ray->direction.z);
 	ray->hit->inter.y = 2 * (ray->direction.x * (ray->origin.x -
-		scene->cylinders->center.x) + ray->direction.y *
-		(ray->origin.y - scene->cylinders->center.y) + ray->direction.z *
-		(ray->origin.z - scene->cylinders->center.z));
-	ray->hit->inter.z = ft_sqr(ray->origin.x - scene->cylinders->center.x) +
-		ft_sqr(ray->origin.y - scene->cylinders->center.y) +
-		ft_sqr(ray->origin.z - scene->cylinders->center.z) -
-        ft_sqr((ray->origin.x - scene->cylinders->center.x) * scene->cylinders->axis.x +
-        (ray->origin.y - scene->cylinders->center.y) * scene->cylinders->axis.y +
-        (ray->origin.z - scene->cylinders->center.z) * scene->cylinders->axis.z) -
-        ft_sqr(scene->cylinders->radius);
+		scene->cylinders[id].center.x) + ray->direction.y *
+		(ray->origin.y - scene->cylinders[id].center.y) + ray->direction.z *
+		(ray->origin.z - scene->cylinders[id].center.z));
+	ray->hit->inter.z = ft_sqr(ray->origin.x - scene->cylinders[id].center.x) +
+		ft_sqr(ray->origin.y - scene->cylinders[id].center.y) +
+		ft_sqr(ray->origin.z - scene->cylinders[id].center.z) -
+        ft_sqr((ray->origin.x - scene->cylinders[id].center.x) * scene->cylinders[id].axis.x +
+        (ray->origin.y - scene->cylinders[id].center.y) * scene->cylinders[id].axis.y +
+        (ray->origin.z - scene->cylinders[id].center.z) * scene->cylinders[id].axis.z) -
+        ft_sqr(scene->cylinders[id].radius);
 	ray->hit->delta = ft_sqr(ray->hit->inter.y) - 4 * ray->hit->inter.x *
 		ray->hit->inter.z;
 }
 
 int intersec_cylinders(t_ray *ray, t_scene *scene)
 {
-    vector_normalize(scene->cylinders->axis);
-    get_delta_cylinder(scene, ray);
-	if (ray->hit->delta < 0)
-		return (0);
-	get_nearest_point(scene, ray);
+	t_vector	actual_nearest_point;
+	int			i;
+
+	i = 0;
+	actual_nearest_point = ray->hit->inter;
+	while (i < scene->cylinder_count)
+	{
+    	vector_normalize(scene->cylinders->axis);
+    	get_delta_cylinder(scene, ray);
+		if (ray->hit->delta < 0)
+			continue;
+		get_nearest_point(scene, ray);
+		if (ray->hit->inter.x != actual_nearest_point.x &&
+			ray->hit->inter.y != actual_nearest_point.y &&
+			ray->hit->inter.z != actual_nearest_point.z)
+		{
+			ray->hit->object = (void *)scene->cylinders;
+			ray->hit->id = i;
+		}
+		i++;
+	}
 	return (1);
 }

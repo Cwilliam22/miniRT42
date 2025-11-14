@@ -14,10 +14,6 @@ double value_d(t_vector n, t_vector p)
     return (result);
 }
 
-int look_at_color(int n)
-{
-   return (1); 
-}
 
 // (Xo, Yo, Zo) = point on the plane
 // (a, b, c) = vector normal to the plane
@@ -35,19 +31,30 @@ int intersec_planes(t_ray *ray, t_scene *scene)
     double  t;
     double  num;
     double  den;
-    t_vector intersec;
+    t_vector inter;
+    t_vector	actual_nearest_point;
+    int     i;
 
+    i = 0;
     // Vérifier if plane est confondu avec la droite (ray)
-    scene->planes->d = value_d(scene->planes->normal, scene->planes->point);
-    num = scalar_product(scene->planes->normal, ray->origin) + scene->planes->d;
-    den = scalar_product(scene->planes->normal, ray->direction);
-    if (fabs(den) < 1e-12)
-        return (0);
-    t = - num / den;
-    ray->hit->inter.x = ray->origin.x + t * ray->direction.x;
-    ray->hit->inter.y = ray->origin.y + t * ray->direction.y;
-    ray->hit->inter.z = ray->origin.z + t * ray->direction.z;
-    get_nearest_point(scene, ray);
+    while (i < scene->plane_count)
+    {
+        scene->planes[i].d = value_d(scene->planes->normal, scene->planes->point);
+        num = scalar_product(scene->planes->normal, ray->origin) + scene->planes->d;
+        den = scalar_product(scene->planes->normal, ray->direction);
+        if (fabs(den) < 1e-12)
+            continue; // parallel to the plane
+        t = - num / den;
+        ray->hit->inter = point_value(ray, t);
+        if (ray->hit->inter.x != actual_nearest_point.x &&
+			ray->hit->inter.y != actual_nearest_point.y &&
+			ray->hit->inter.z != actual_nearest_point.z)
+		{
+			ray->hit->object = (void *)scene->planes;
+			ray->hit->id = i;
+		}
+		i++;
+    }
     return (1);
 }
 
