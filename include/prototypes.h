@@ -6,7 +6,7 @@
 /*   By: wcapt <wcapt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:43:00 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/11/15 17:20:04 by wcapt            ###   ########.fr       */
+/*   Updated: 2025/11/17 16:30:42 by wcapt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,9 @@ t_vector    vector_normalize(t_vector v);
 // camera.c
 int         make_base_cam(t_scene *scene);
 int         make_orientation_cam(t_scene *scene);
+
+// color.c
+int         rgb_to_int(t_color color);
 
 // raytracing_utils.c
 int         is_perpendicular(t_vector v1, t_vector v2);

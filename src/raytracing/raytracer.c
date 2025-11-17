@@ -36,10 +36,12 @@ int init_mlx(t_scene *scene)
 
 #endif
 
+/*
 int	init_pixel(t_scene *scene, t_ray *ray)
 {
 	return (1);
 }
+*/
 
 // linear combination
 // Dmonde = Pmonde - Ocam = X * right + Y * up + Z * forward
@@ -63,9 +65,9 @@ int parse_pixel(t_scene *scene, t_ray *ray)
 {
     int    x;
     int    y;
-	double X;
-	double Y;
-	double Z;
+	double u;
+	double v;
+	double w;
 
 	x = 0;
 	y = 0;
@@ -82,12 +84,14 @@ int parse_pixel(t_scene *scene, t_ray *ray)
 			// Initialize ray with origin and direction for each pixel
 			ray->origin = scene->camera.position;
 			// Position pixel with camera's view
-            X = -scene->viewport->width  * 0.5 + (x + 0.5) * scene->viewport->px_x;
-			Y =  scene->viewport->height * 0.5 - (y + 0.5) * scene->viewport->px_y;
-			Z =  scene->camera.d;
+            u = -scene->viewport->width  * 0.5 + (x + 0.5) * scene->viewport->px_x;
+			v =  scene->viewport->height * 0.5 - (y + 0.5) * scene->viewport->px_y;
+			w =  scene->camera.d;
 			// Position pixel with world's view
-			ray->direction = vector_normalize(change_base_ray((t_vector){X, Y, Z}, scene));
-            init_pixel(scene, ray);
+			ray->direction = vector_normalize(change_base_ray((t_vector){u, v, w}, scene));
+			ray->pixel_x = x;
+			ray->pixel_y = y;
+            ray_intersec(ray, scene)
             y++;
         }
         x++;

@@ -6,7 +6,7 @@
 /*   By: wcapt <wcapt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:42:44 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/09/19 17:06:47 by wcapt            ###   ########.fr       */
+/*   Updated: 2025/11/17 17:05:14 by wcapt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,9 @@
 
 # define WIDTH 800
 # define HEIGHT 600
+
+# define SPHERE 1
+# define CYLINDER 2
+# define PLANE 3
 
 #endif

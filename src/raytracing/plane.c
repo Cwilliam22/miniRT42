@@ -53,6 +53,7 @@ int intersec_planes(t_ray *ray, t_scene *scene)
 		{
 			ray->hit->object = (void *)scene->planes;
 			ray->hit->id = i;
+            ray->hit->object_type = PLANE;
             // send norme btw camera and intersection point for shapes
 		}
 		i++;

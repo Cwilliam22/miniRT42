@@ -6,7 +6,7 @@
 /*   By: wcapt <wcapt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:42:53 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/11/11 15:09:09 by wcapt            ###   ########.fr       */
+/*   Updated: 2025/11/17 16:33:09 by wcapt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ typedef struct s_ray
 	t_vector	origin;
 	t_vector	direction;
 	t_hit		*hit;
+	int			pixel_x;
+	int			pixel_y;
 	t_color		color;
 }	t_ray;
 
