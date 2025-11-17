@@ -23,8 +23,8 @@ void	get_nearest_point(t_ray *ray, t_scene *scene)
 		(2 * ray->hit->inter.x);
 	inter1 = point_value(ray, t1);
 	inter2 = point_value(ray, t2);
-	inter1 = get_nearest_intersec(inter1, inter2);
-	ray->hit->inter = get_nearest_intersec(inter1, ray->hit->inter);
+	inter1 = get_nearest_intersec(inter1, inter2, scene);
+	ray->hit->inter = get_nearest_intersec(inter1, ray->hit->inter, scene);
 }
 
 // Formules utilisées :

@@ -27,7 +27,7 @@
 //      Xi = Xa + a * ti
 //      Yi = Ya + b * ti
 //      Zi = Za + c * ti
-void get_delta_cylindre(t_scene *scene, t_ray *ray, int id)
+static void get_delta_cylinder(t_scene *scene, t_ray *ray, int id)
 {
 	ray->hit->inter.x = (ft_sqr(ray->direction.x) + ft_sqr(ray->direction.y) +
 		ft_sqr(ray->direction.z)) - ft_sqr(scene->cylinders[id].axis.x *
@@ -58,7 +58,7 @@ int intersec_cylinders(t_ray *ray, t_scene *scene)
 	while (i < scene->cylinder_count)
 	{
     	vector_normalize(scene->cylinders->axis);
-    	get_delta_cylinder(scene, ray);
+    	get_delta_cylinder(scene, ray, i);
 		if (ray->hit->delta < 0)
 			continue;
 		get_nearest_point(scene, ray);

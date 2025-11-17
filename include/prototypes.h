@@ -6,7 +6,7 @@
 /*   By: wcapt <wcapt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:43:00 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/11/04 16:57:31 by wcapt            ###   ########.fr       */
+/*   Updated: 2025/11/15 17:20:04 by wcapt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,14 @@ int         ray_intersec(t_ray *ray, t_scene *scene);
 
 // sphere.c
 t_vector    point_value(t_ray *ray, double t);
-void        get_color(t_ray *ray, t_scene *scene);
-void        get_delta_sphere(t_scene *scene, t_ray *ray);
-int         intersec_sphere(t_ray *ray, t_scene *scene);
+void        get_nearest_point(t_ray *ray, t_scene *scene);
+int         intersec_spheres(t_ray *ray, t_scene *scene);
 
 // plane.c
-int         intersec_plane(t_ray *ray, t_scene *scene);
+int         intersec_planes(t_ray *ray, t_scene *scene);
 
 // cylinder.c
-void        get_delta_cylinder(t_scene *scene, t_ray *ray);
-int         intersec_cylinder(t_ray *ray, t_scene *scene);
+int         intersec_cylinders(t_ray *ray, t_scene *scene);
 
 // raytracer.c
 int         init_mlx(t_scene *scene);
@@ -93,7 +91,7 @@ int         make_orientation_cam(t_scene *scene);
 // raytracing_utils.c
 int         is_perpendicular(t_vector v1, t_vector v2);
 double      ft_sqr(double x);
-t_vector	get_nearest_intersec(t_vector p1, t_vector p2);
+t_vector	get_nearest_intersec(t_vector p1, t_vector p2, t_scene *scene);
 
 
 #endif

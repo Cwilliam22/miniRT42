@@ -6,7 +6,7 @@
 // 3) A une infinité de point d'intersection (droite et plan confondus)
 
 // d = −(a * Xo​ + b * Yo​ + c * Zo​)
-double value_d(t_vector n, t_vector p)
+static double value_d(t_vector n, t_vector p)
 {
     double  result;
 
