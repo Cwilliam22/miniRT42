@@ -61,7 +61,7 @@ int intersec_cylinders(t_ray *ray, t_scene *scene)
     	get_delta_cylinder(scene, ray, i);
 		if (ray->hit->delta < 0)
 			continue;
-		get_nearest_point(scene, ray);
+		get_nearest_point(ray, scene);
 		if (ray->hit->inter.x != actual_nearest_point.x &&
 			ray->hit->inter.y != actual_nearest_point.y &&
 			ray->hit->inter.z != actual_nearest_point.z)

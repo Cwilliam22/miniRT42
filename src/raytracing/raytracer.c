@@ -91,7 +91,7 @@ int parse_pixel(t_scene *scene, t_ray *ray)
 			ray->direction = vector_normalize(change_base_ray((t_vector){u, v, w}, scene));
 			ray->pixel_x = x;
 			ray->pixel_y = y;
-            ray_intersec(ray, scene)
+            ray_intersec(ray, scene);
             y++;
         }
         x++;
@@ -104,7 +104,7 @@ int raytracer(t_scene *scene, t_ray *ray)
 	if (!init_mlx(scene))
 		return (0);
 	if (!make_orientation_cam(scene))
-		retutnn (0);
+		return (0);
 	if (!parse_pixel(scene, ray))
 	{
 		mlx_destroy_window(scene->mlx, scene->mlx_win);

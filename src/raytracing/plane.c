@@ -31,7 +31,6 @@ int intersec_planes(t_ray *ray, t_scene *scene)
     double  t;
     double  num;
     double  den;
-    t_vector inter;
     t_vector	actual_nearest_point;
     int     i;
 

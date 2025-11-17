@@ -6,7 +6,7 @@
 /*   By: wcapt <wcapt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:42:53 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/11/17 16:33:09 by wcapt            ###   ########.fr       */
+/*   Updated: 2025/11/17 18:15:10 by wcapt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,18 @@ typedef struct s_color
 	double	g;
 	double	b;
 }	t_color;
+
+/* ============ RAYTRACING STRUCTURES ============ */
+
+typedef struct s_hit
+{
+	t_bool		hit;
+    double		delta;
+    t_vector 	inter;
+    int			id;
+    int			object_type;
+    void		*object;
+}	t_hit;
 
 typedef struct s_ray
 {
@@ -87,18 +99,6 @@ typedef struct s_viewport
 	double px_y;
 
 }	t_viewport;
-
-/* ============ HIT ============ */
-
-typedef struct s_hit
-{
-	t_bool		hit;
-    double		delta;
-    t_vector 	inter;
-    int			id;
-    int			object_type;
-    void		*object;
-}	t_hit;
 
 /* ============ GEOMETRIC OBJECTS ============ */
 

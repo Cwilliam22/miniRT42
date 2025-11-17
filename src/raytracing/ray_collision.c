@@ -4,20 +4,19 @@ t_color looking_for_color(t_ray *ray, t_scene *scene)
 {
     t_color rgb;
     
-
+    rgb = (t_color){0, 0, 0};
     if (ray->hit->object_type == SPHERE)
-        rgb = scene->spheres[hit->id]->color;
+        rgb = scene->spheres[ray->hit->id].color;
     else if (ray->hit->object_type == PLANE)
-        rgb = scene->planes[hit->id]->color;
+        rgb = scene->planes[ray->hit->id].color;
     else if (ray->hit->object_type == CYLINDER)
-        rgb = scene->cylinders[hit->id]->color;
+        rgb = scene->cylinders[ray->hit->id].color;
     return (rgb);
 }
 
 int ray_intersec(t_ray *ray, t_scene *scene)
 {
     t_color rgb;
-    int     type;
     int     color;
 
     intersec_spheres(ray, scene);
