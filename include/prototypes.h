@@ -6,7 +6,7 @@
 /*   By: wcapt <wcapt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:43:00 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/11/17 16:30:42 by wcapt            ###   ########.fr       */
+/*   Updated: 2025/11/23 19:21:34 by wcapt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,10 @@ int         make_orientation_cam(t_scene *scene);
 
 // color.c
 int         rgb_to_int(t_color color);
+
+// ray.c
+void        init_ray(t_ray *ray, t_vector origin, t_vector direction);
+void        reset_hit(t_hit *hit);
 
 // raytracing_utils.c
 int         is_perpendicular(t_vector v1, t_vector v2);

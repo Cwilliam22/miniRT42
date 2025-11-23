@@ -76,13 +76,8 @@ int parse_pixel(t_scene *scene, t_ray *ray)
         y = 0;
         while (y < HEIGHT)
         {
-			// Calculate the direction vector from the camera to the pixel
-			// Vx = Bx - Ax
-			// Vy = By - Ay
-			// Vz = Bz - Az
-
 			// Initialize ray with origin and direction for each pixel
-			ray->origin = scene->camera.position;
+			//ray->origin = scene->camera.position;
 			// Position pixel with camera's view
             u = -scene->viewport->width  * 0.5 + (x + 0.5) * scene->viewport->px_x;
 			v =  scene->viewport->height * 0.5 - (y + 0.5) * scene->viewport->px_y;
@@ -91,6 +86,7 @@ int parse_pixel(t_scene *scene, t_ray *ray)
 			ray->direction = vector_normalize(change_base_ray((t_vector){u, v, w}, scene));
 			ray->pixel_x = x;
 			ray->pixel_y = y;
+			init_ray(&ray, scene->camera.position, ray->direction);
             ray_intersec(ray, scene);
             y++;
         }
