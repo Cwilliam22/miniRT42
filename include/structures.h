@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wcapt <wcapt@student.42.fr>                +#+  +:+       +#+        */
+/*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:42:53 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/11/17 18:15:10 by wcapt            ###   ########.fr       */
+/*   Updated: 2025/11/24 11:35:28 by william          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef struct s_ray
 {
 	t_vector	origin;
 	t_vector	direction;
-	t_hit		*hit;
+	t_hit		hit;
 	int			pixel_x;
 	int			pixel_y;
 	t_color		color;

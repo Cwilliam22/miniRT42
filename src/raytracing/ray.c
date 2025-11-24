@@ -12,7 +12,8 @@ void    reset_hit(t_hit *hit)
 
 void    init_ray(t_ray *ray, t_vector origin, t_vector direction)
 {
+        (void)direction;
         ray->origin = origin;
         ray->direction = direction;
-        reset_hit(ray->hit);
+        reset_hit(&ray->hit);
 }

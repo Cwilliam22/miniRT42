@@ -17,14 +17,14 @@ void	get_nearest_point(t_ray *ray, t_scene *scene)
 	t_vector inter1;
 	t_vector inter2;
 
-	t1 = (-ray->hit->inter.y + sqrt(ray->hit->delta)) /
-		(2 * ray->hit->inter.x);
-	t2 = (-ray->hit->inter.y - sqrt(ray->hit->delta)) /
-		(2 * ray->hit->inter.x);
+	t1 = (-ray->hit.inter.y + sqrt(ray->hit.delta)) /
+		(2 * ray->hit.inter.x);
+	t2 = (-ray->hit.inter.y - sqrt(ray->hit.delta)) /
+		(2 * ray->hit.inter.x);
 	inter1 = point_value(ray, t1);
 	inter2 = point_value(ray, t2);
 	inter1 = get_nearest_intersec(inter1, inter2, scene);
-	ray->hit->inter = get_nearest_intersec(inter1, ray->hit->inter, scene);
+	ray->hit.inter = get_nearest_intersec(inter1, ray->hit.inter, scene);
 }
 
 // Formules utilisées :
@@ -47,18 +47,18 @@ void	get_nearest_point(t_ray *ray, t_scene *scene)
 //      Zi = Za + c * ti
 void get_delta_sphere(t_scene *scene, t_ray *ray, int id)
 {
-	ray->hit->inter.x = ft_sqr(ray->direction.x) + ft_sqr(ray->direction.y) +
+	ray->hit.inter.x = ft_sqr(ray->direction.x) + ft_sqr(ray->direction.y) +
 		ft_sqr(ray->direction.z);
-	ray->hit->inter.y = 2 * (ray->direction.x * (ray->origin.x -
+	ray->hit.inter.y = 2 * (ray->direction.x * (ray->origin.x -
 		scene->spheres[id].center.x) + ray->direction.y *
 		(ray->origin.y - scene->spheres[id].center.y) + ray->direction.z *
 		(ray->origin.z - scene->spheres[id].center.z));
-	ray->hit->inter.z = ft_sqr(ray->origin.x - scene->spheres[id].center.x) +
+	ray->hit.inter.z = ft_sqr(ray->origin.x - scene->spheres[id].center.x) +
 		ft_sqr(ray->origin.y - scene->spheres[id].center.y) +
 		ft_sqr(ray->origin.z - scene->spheres[id].center.z) -
 		ft_sqr(scene->spheres[id].radius);
-	ray->hit->delta = ft_sqr(ray->hit->inter.y) - 4 * ray->hit->inter.x *
-		ray->hit->inter.z;
+	ray->hit.delta = ft_sqr(ray->hit.inter.y) - 4 * ray->hit.inter.x *
+		ray->hit.inter.z;
 }
 
 int intersec_spheres(t_ray *ray, t_scene *scene)
@@ -67,20 +67,20 @@ int intersec_spheres(t_ray *ray, t_scene *scene)
 	int			i;
 
 	i = 0;
-	actual_nearest_point = ray->hit->inter;
+	actual_nearest_point = ray->hit.inter;
 	while (i < scene->sphere_count)
 	{
 		get_delta_sphere(scene, ray, i);
-		if (ray->hit->delta < 0)
+		if (ray->hit.delta < 0)
 			continue;
 		get_nearest_point(ray, scene);
-		if (ray->hit->inter.x != actual_nearest_point.x &&
-			ray->hit->inter.y != actual_nearest_point.y &&
-			ray->hit->inter.z != actual_nearest_point.z)
+		if (ray->hit.inter.x != actual_nearest_point.x &&
+			ray->hit.inter.y != actual_nearest_point.y &&
+			ray->hit.inter.z != actual_nearest_point.z)
 		{
-			ray->hit->object = (void *)scene->spheres;
-			ray->hit->id = i;
-			ray->hit->object_type = SPHERE;
+			ray->hit.object = (void *)scene->spheres;
+			ray->hit.id = i;
+			ray->hit.object_type = SPHERE;
 			// send norme btw camera and intersection point for shapes
 		}
 		i++;
