@@ -67,7 +67,8 @@ int raytracer(t_scene *scene, t_ray *ray)
 		return (0);
 	if (!make_orientation_cam(scene))
 		return (0);
-	viewport_size(scene);
+	if (!init_viewport(scene))
+		return (0);
 	if (!parse_pixel(scene, ray))
 	{
 		mlx_destroy_window(scene->mlx, scene->mlx_win);

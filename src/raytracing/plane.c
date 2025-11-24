@@ -34,6 +34,7 @@ int intersec_planes(t_ray *ray, t_scene *scene)
     t_vector	actual_nearest_point;
     int     i;
 
+    //printf("intersec_planes called\n");
     i = 0;
     // Vérifier if plane est confondu avec la droite (ray)
     actual_nearest_point = ray->hit.inter;

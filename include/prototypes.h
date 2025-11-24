@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototypes.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wcapt <wcapt@student.42.fr>                +#+  +:+       +#+        */
+/*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:43:00 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/11/23 19:21:34 by wcapt            ###   ########.fr       */
+/*   Updated: 2025/11/24 16:31:37 by william          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ t_bool		parse_color(char *str, t_color *color);
 /* ============ RAYTRACING ============ */
 
 // calculs.c
-int         radian_to_degree(double rad);
-int         degree_to_radian(int deg);
+double         radian_to_degree(double rad);
+double         degree_to_radian(int deg);
 
 // ray_collision.c
 int         ray_intersec(t_ray *ray, t_scene *scene);
@@ -74,8 +74,8 @@ t_vector    change_base_ray(t_vector v, t_scene *scene);
 int         parse_pixel(t_scene *scene, t_ray *ray);
 int         raytracer(t_scene *scene, t_ray *ray);
 
-// trigonometry.c
-int         viewport_size(t_scene *scene);
+// viewport.c
+int         init_viewport(t_scene *scene);
 
 // vectors.c
 double      scalar_product(t_vector v1, t_vector v2);

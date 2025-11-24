@@ -53,6 +53,7 @@ int intersec_cylinders(t_ray *ray, t_scene *scene)
 	t_vector	actual_nearest_point;
 	int			i;
 
+	//printf("intersec_cylinders called\n");
 	i = 0;
 	actual_nearest_point = ray->hit.inter;
 	while (i < scene->cylinder_count)

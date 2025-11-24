@@ -1,0 +1,11 @@
+# Lumière ambiante
+A 0.2 255,255,255
+
+# Lumière directe
+L 0,5,-5 0.7 255,255,255
+
+# Caméra positionnée devant la sphère
+C 0,0,-5 0,0,1 60
+
+# Sphère centrée
+sp 0,0,0 2 255,0,0

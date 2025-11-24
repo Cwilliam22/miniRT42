@@ -17,6 +17,7 @@ void	get_nearest_point(t_ray *ray, t_scene *scene)
 	t_vector inter1;
 	t_vector inter2;
 
+	//printf("get_nearest_point called\n");
 	t1 = (-ray->hit.inter.y + sqrt(ray->hit.delta)) /
 		(2 * ray->hit.inter.x);
 	t2 = (-ray->hit.inter.y - sqrt(ray->hit.delta)) /
@@ -47,6 +48,7 @@ void	get_nearest_point(t_ray *ray, t_scene *scene)
 //      Zi = Za + c * ti
 void get_delta_sphere(t_scene *scene, t_ray *ray, int id)
 {
+	//printf("get_delta_sphere called for sphere id %d\n", id);
 	ray->hit.inter.x = ft_sqr(ray->direction.x) + ft_sqr(ray->direction.y) +
 		ft_sqr(ray->direction.z);
 	ray->hit.inter.y = 2 * (ray->direction.x * (ray->origin.x -
@@ -66,13 +68,19 @@ int intersec_spheres(t_ray *ray, t_scene *scene)
 	t_vector	actual_nearest_point;
 	int			i;
 
+	//printf("intersec_spheres called\n");
+	//printf("Number of spheres in scene: %d\n", scene->sphere_count);
 	i = 0;
 	actual_nearest_point = ray->hit.inter;
 	while (i < scene->sphere_count)
 	{
 		get_delta_sphere(scene, ray, i);
+		//printf("Delta = %.5f\n", ray->hit.delta);
 		if (ray->hit.delta < 0)
+		{
+			i++;
 			continue;
+		}
 		get_nearest_point(ray, scene);
 		if (ray->hit.inter.x != actual_nearest_point.x &&
 			ray->hit.inter.y != actual_nearest_point.y &&
@@ -85,5 +93,6 @@ int intersec_spheres(t_ray *ray, t_scene *scene)
 		}
 		i++;
 	}
+	//printf("intersec_spheres finished\n");
 	return (1);
 }
