@@ -6,7 +6,7 @@
 /*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:42:53 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/11/24 11:35:28 by william          ###   ########.fr       */
+/*   Updated: 2025/11/24 16:06:11 by william          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ typedef struct s_scene
 	t_sphere		*spheres;
 	t_plane			*planes;
 	t_cylinder		*cylinders;
-	t_viewport		*viewport;
+	t_viewport		viewport;
 	int				ambient_count;
 	int				camera_count;
 	int				light_count;

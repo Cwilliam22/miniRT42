@@ -20,11 +20,11 @@ int parse_pixel(t_scene *scene, t_ray *ray)
 			// Position pixel with camera's view
             printf("------------------------------------------------\n");
             printf("width: %.2f, height: %.2f, px_x: %.2f, px_y: %.2f\n",
-                scene->viewport->width, scene->viewport->height,
-                scene->viewport->px_x, scene->viewport->px_y);
+                scene->viewport.width, scene->viewport.height,
+                scene->viewport.px_x, scene->viewport.px_y);
             printf("------------------------------------------------\n");
-            u = -scene->viewport->width  * 0.5 + (x + 0.5) * scene->viewport->px_x;
-			v =  scene->viewport->height * 0.5 - (y + 0.5) * scene->viewport->px_y;
+            u = -scene->viewport.width  * 0.5 + (x + 0.5) * scene->viewport.px_x;
+			v =  scene->viewport.height * 0.5 - (y + 0.5) * scene->viewport.px_y;
 			w =  scene->camera.d;
 			// Position pixel with world's view
             //printf("------------------------------------------------\n");
