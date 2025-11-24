@@ -86,7 +86,7 @@ int parse_pixel(t_scene *scene, t_ray *ray)
 			ray->direction = vector_normalize(change_base_ray((t_vector){u, v, w}, scene));
 			ray->pixel_x = x;
 			ray->pixel_y = y;
-			init_ray(&ray, scene->camera.position, ray->direction);
+			init_ray(ray, scene->camera.position, ray->direction);
             ray_intersec(ray, scene);
             y++;
         }
